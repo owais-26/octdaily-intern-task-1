@@ -1,0 +1,70 @@
+<div class="container my-5">
+  <h1 class="my-2 text-center">Add New Employee!</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form
+       #form="ngForm" (ngSubmit)="addEmployee()" 
+      class="border rounded p-4">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            [(ngModel)]="addEmployeeRequest.name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            [(ngModel)]="addEmployeeRequest.email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="phone"
+            name="phone"
+            [(ngModel)]="addEmployeeRequest.phone"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="salary">Salary</label>
+          <input
+            type="number"
+            class="form-control"
+            id="salary"
+            name="salary"
+            [(ngModel)]="addEmployeeRequest.salary"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="department">Department</label>
+          <input
+            type="text"
+            class="form-control"
+            id="department"
+            name="department"
+            [(ngModel)]="addEmployeeRequest.department"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
