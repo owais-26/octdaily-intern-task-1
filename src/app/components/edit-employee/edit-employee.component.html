@@ -2,7 +2,7 @@
   <h1 class="my-2 text-center">Edit New Employee!</h1>
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <form #form="ngForm"  class="border rounded p-4">
+      <form #form="ngForm" (ngSubmit)="updateEmployee()" class="border rounded p-4">
         <div class="form-group">
           <label for="id">ID</label>
           <input
@@ -10,7 +10,7 @@
             class="form-control"
             id="id"
             name="id"
-            
+            [(ngModel)]="employeeDetails.id"
             required
           />
         </div>
@@ -21,7 +21,7 @@
             class="form-control"
             id="name"
             name="name"
-            
+            [(ngModel)]="employeeDetails.name"
             required
           />
         </div>
@@ -32,7 +32,7 @@
             class="form-control"
             id="email"
             name="email"
-            
+            [(ngModel)]="employeeDetails.email"
             required
           />
         </div>
@@ -43,7 +43,7 @@
             class="form-control"
             id="phone"
             name="phone"
-            
+            [(ngModel)]="employeeDetails.phone"
             required
           />
         </div>
@@ -54,7 +54,7 @@
             class="form-control"
             id="salary"
             name="salary"
-            
+            [(ngModel)]="employeeDetails.salary"
             required
           />
         </div>
@@ -65,16 +65,23 @@
             class="form-control"
             id="department"
             name="department"
-            
+            [(ngModel)]="employeeDetails.department"
             required
           />
         </div>
 
-        <button type="submit" class="btn btn-primary btn-block mt-3">Save</button>
-        <button type="submit" class="btn btn-danger ms-3 btn-block mt-3">Delete</button>
+        <button type="submit" class="btn btn-primary btn-block mt-3">
+          Save
+        </button>
+        <button
+  type="button"
+  class="btn btn-danger ms-3 btn-block mt-3"
+  (click)="deleteEmployee()"
+>
+  Delete
+</button>
+
       </form>
     </div>
   </div>
 </div>
-
-

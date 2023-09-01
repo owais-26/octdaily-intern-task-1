@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background: rgb(75, 115, 150);
+  background: linear-gradient(
+    144deg,
+    rgba(75, 115, 150, 1) 0%,
+    rgba(163, 204, 65, 0.8155637254901961) 33%,
+    rgba(246, 246, 246, 1) 100%
+  );
+}
+.navbar{
+ background-color: black !important;   
+}
+td{
+    font-weight: 500;
+}
+h1{
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
+    font-weight: 800;
+}
