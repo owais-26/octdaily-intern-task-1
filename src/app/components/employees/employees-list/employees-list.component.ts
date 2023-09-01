@@ -1,154 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Employee } from 'src/app/models/employee.model';
-
-
-
+import { EmployeesService } from 'src/app/services/employees.service';
 
 @Component({
-
   selector: 'app-employees-list',
 
   templateUrl: './employees-list.component.html',
 
   styleUrls: ['./employees-list.component.css'],
-
 })
-
 export class EmployeesListComponent implements OnInit {
-
-  employees: Employee[] = [
-
-    {
-
-      id: 'emp-001',
-
-      name: 'owais',
-
-      email: 'owais.octdaily@outlook.com',
-
-      phone: 999999999,
-
-      salary: 40000,
-
-      department: 'Tech',
-
-    },
-    {
-
-      id: 'emp-001',
-
-      name: 'owais',
-
-      email: 'owais.octdaily@outlook.com',
-
-      phone: 999999999,
-
-      salary: 40000,
-
-      department: 'Tech',
-
-    },
-    {
-
-      id: 'emp-001',
-
-      name: 'owais',
-
-      email: 'owais.octdaily@outlook.com',
-
-      phone: 999999999,
-
-      salary: 40000,
-
-      department: 'Tech',
-
-    },
-    {
-
-      id: 'emp-001',
-
-      name: 'owais',
-
-      email: 'owais.octdaily@outlook.com',
-
-      phone: 999999999,
-
-      salary: 40000,
-
-      department: 'Tech',
-
-    },
-    {
-
-      id: 'emp-001',
-
-      name: 'owais',
-
-      email: 'owais.octdaily@outlook.com',
-
-      phone: 999999999,
-
-      salary: 40000,
-
-      department: 'Tech',
-
-    },
-
-    {
-
-      id: 'emp-002',
-
-      name: 'shees',
-
-      email: 'shees.octdaily@outlook.com',
-
-      phone: 999999999,
-
-      salary: 40000,
-
-      department: 'Tech',
-
-    },
-
-    {
-
-      id: 'emp-003',
-
-      name: 'sumeed',
-
-      email: 'sumeed.octdaily@outlook.com',
-
-      phone: 999999999,
-
-      salary: 40000,
-
-      department: 'Lead',
-
-    },
-
-  ];
+  employees: Employee[] = [];
   originalEmployees: Employee[] = [];
   displayedEmployees: Employee[] = [];
   currentPage = 1;
   employeesPerPage = 5;
   searchTerm = '';
 
-
-  constructor() {}
+  constructor(private employeesServices: EmployeesService) {}
 
   ngOnInit(): void {
-
-    this.updateDisplayedEmployees();
+    this.employeesServices.getAllEmployees().subscribe({
+      next: (employees) => {
+         this.employees = employees;
+         this.originalEmployees = employees; // Store a copy for filtering
+         this.updateDisplayedEmployees();
+      },
+      error: (response) => {
+        console.log(response);
+      },
+    });
   }
-toggleSort(order: 'asc' | 'desc'): void {
-  if (order === 'asc') {
-    this.employees.sort((a, b) => a.name.localeCompare(b.name));
-  } else {
-    this.employees.sort((a, b) => b.name.localeCompare(a.name));
+  toggleSort(order: 'asc' | 'desc'): void {
+    if (order === 'asc') {
+      this.employees.sort((a, b) => a.name.localeCompare(b.name));
+    } else {
+      this.employees.sort((a, b) => b.name.localeCompare(a.name));
+    }
+    this.updateDisplayedEmployees(); // After sorting, update displayed employees
   }
-  this.updateDisplayedEmployees(); // After sorting, update displayed employees
-}
   onSearch($event: any): void {
     this.searchTerm = $event?.target.value.toLowerCase(); // Convert to lowercase for case-insensitive search
     this.currentPage = 1; // Reset to first page when performing a new search
@@ -180,7 +71,7 @@ toggleSort(order: 'asc' | 'desc'): void {
     let filteredEmployees = this.employees;
 
     if (this.searchTerm) {
-      filteredEmployees = this.employees.filter(employee =>
+      filteredEmployees = this.employees.filter((employee) =>
         employee.name.toLowerCase().includes(this.searchTerm)
       );
     }
@@ -188,5 +79,3 @@ toggleSort(order: 'asc' | 'desc'): void {
     this.displayedEmployees = filteredEmployees.slice(startIndex, endIndex);
   }
 }
-
-

@@ -16,6 +16,7 @@ import { AddEmployeeComponent } from './components/add-employee/add-employee/add
 import { FormsModule } from '@angular/forms';
 
 import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 
@@ -41,6 +42,8 @@ import { EditEmployeeComponent } from './components/edit-employee/edit-employee.
     AppRoutingModule,
 
     FormsModule,
+
+    HttpClientModule
 
   ],
 
