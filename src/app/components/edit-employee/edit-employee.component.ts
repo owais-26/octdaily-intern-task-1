@@ -17,6 +17,10 @@ export class EditEmployeeComponent implements OnInit {
     phone: 0,
     salary: 0,
     department: '',
+    createdOn: new Date(), // Set default value to current date and time
+    lastModifiedOn: new Date(), // Set default value to current date and time
+    createdBy: '', // Set default value to an empty string or the current user's name
+    lastModifiedBy: '', // Set default value to an empty string or the current user's name
   };
 
   constructor(
