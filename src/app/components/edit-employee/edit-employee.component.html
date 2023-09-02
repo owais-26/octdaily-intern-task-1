@@ -69,18 +69,63 @@
             required
           />
         </div>
+        
+        <!-- New fields for Created On, Last Modified On, Created By, and Last Modified By -->
+        <div class="form-group">
+          <label for="createdOn">Created On</label>
+          <input
+            type="text"
+            class="form-control"
+            id="createdOn"
+            name="createdOn"
+            [(ngModel)]="employeeDetails.createdOn"
+            disabled
+          />
+        </div>
+        <div class="form-group">
+          <label for="lastModifiedOn">Last Modified On</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastModifiedOn"
+            name="lastModifiedOn"
+            [(ngModel)]="employeeDetails.lastModifiedOn"
+            disabled
+          />
+        </div>
+        <div class="form-group">
+          <label for="createdBy">Created By</label>
+          <input
+            type="text"
+            class="form-control"
+            id="createdBy"
+            name="createdBy"
+            [(ngModel)]="employeeDetails.createdBy"
+            disabled
+          />
+        </div>
+        <div class="form-group">
+          <label for="lastModifiedBy">Last Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastModifiedBy"
+            name="lastModifiedBy"
+            [(ngModel)]="employeeDetails.lastModifiedBy"
+              
+          />
+        </div>
 
         <button type="submit" class="btn btn-primary btn-block mt-3">
           Save
         </button>
         <button
-  type="button"
-  class="btn btn-danger ms-3 btn-block mt-3"
-  (click)="deleteEmployee()"
->
-  Delete
-</button>
-
+          type="button"
+          class="btn btn-danger ms-3 btn-block mt-3"
+          (click)="deleteEmployee()"
+        >
+          Delete
+        </button>
       </form>
     </div>
   </div>

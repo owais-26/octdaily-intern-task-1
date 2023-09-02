@@ -2,9 +2,7 @@
   <h1 class="my-2 text-center">Add New Employee!</h1>
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <form
-       #form="ngForm" (ngSubmit)="addEmployee()" 
-      class="border rounded p-4">
+      <form #form="ngForm" (ngSubmit)="addEmployee()" class="border rounded p-4">
         <div class="form-group">
           <label for="name">Name</label>
           <input
@@ -60,11 +58,23 @@
             required
           />
         </div>
+       
+       
+        <div class="form-group">
+          <label for="createdBy">Created By</label>
+          <input
+            type="text"
+            class="form-control"
+            id="createdBy"
+            name="createdBy"
+            [(ngModel)]="addEmployeeRequest.createdBy"
+            required
+          />
+        </div>
+      
 
         <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
       </form>
     </div>
   </div>
 </div>
-
-

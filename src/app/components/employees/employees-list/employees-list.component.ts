@@ -17,15 +17,19 @@ export class EmployeesListComponent implements OnInit {
   currentPage = 1;
   employeesPerPage = 5;
   searchTerm = '';
-
+  createdByFilter: string = '';
+  lastModifiedByFilter: string = '';
+  createdOnFilter: Date | null = null;
+  lastModifiedOnFilter: Date | null = null;
   constructor(private employeesServices: EmployeesService) {}
 
   ngOnInit(): void {
     this.employeesServices.getAllEmployees().subscribe({
       next: (employees) => {
-         this.employees = employees;
-         this.originalEmployees = employees; // Store a copy for filtering
-         this.updateDisplayedEmployees();
+        this.employees = employees;
+        this.originalEmployees = employees; // Store a copy for filtering
+        this.updateDisplayedEmployees();
+        console.log(this.displayedEmployees);
       },
       error: (response) => {
         console.log(response);
@@ -63,6 +67,49 @@ export class EmployeesListComponent implements OnInit {
       this.currentPage = pageNumber;
       this.updateDisplayedEmployees();
     }
+  }
+  applyFilters(): void {
+    this.displayedEmployees = this.originalEmployees.filter((employee) => {
+      const createdOnMatch =
+        !this.createdOnFilter ||
+        this.compareDates(this.createdOnFilter, employee.createdOn);
+
+      const lastModifiedOnMatch =
+        !this.lastModifiedOnFilter ||
+        this.compareDates(this.lastModifiedOnFilter, employee.lastModifiedOn);
+
+      const createdByMatch =
+        !this.createdByFilter ||
+        employee.createdBy
+          .toLowerCase()
+          .includes(this.createdByFilter.toLowerCase());
+
+      const lastModifiedByMatch =
+        !this.lastModifiedByFilter ||
+        employee.lastModifiedBy
+          .toLowerCase()
+          .includes(this.lastModifiedByFilter.toLowerCase());
+
+      return (
+        createdOnMatch &&
+        lastModifiedOnMatch &&
+        createdByMatch &&
+        lastModifiedByMatch
+      );
+    });
+  }
+
+  compareDates(filterDate: Date | null, employeeDate: Date): boolean {
+    if (!filterDate) {
+      return true; // If no filter date is provided, consider it a match
+    }
+
+    // Compare the filterDate and employeeDate
+    return (
+      filterDate.getUTCFullYear() === employeeDate.getUTCFullYear() &&
+      filterDate.getUTCMonth() === employeeDate.getUTCMonth() &&
+      filterDate.getUTCDate() === employeeDate.getUTCDate()
+    );
   }
 
   updateDisplayedEmployees(): void {
