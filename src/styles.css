@@ -1,13 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+/* styles.css */
+@import "~font-awesome/css/font-awesome.css";
+
 body {
   background: rgb(75, 115, 150);
-  background: linear-gradient(
-    144deg,
-    rgba(75, 115, 150, 1) 0%,
-    rgba(163, 204, 65, 0.8155637254901961) 33%,
-    rgba(246, 246, 246, 1) 100%
-  );
+  background: linear-gradient(144deg, rgba(75, 115, 150, 1) 0%, rgba(163, 204, 65, 0.8155637254901961) 33%, rgba(246, 246, 246, 1) 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
+
 .navbar{
  background-color: black !important;   
 }
@@ -17,4 +19,40 @@ td{
 h1{
     font-family: Georgia, 'Times New Roman', Times, serif !important;
     font-weight: 800;
+}
+.fb-profile {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+ 
+    
+}
+
+.fb-profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+}
+
+.fb-profile-name {
+  font-size: 15px;
+  font-weight: bold;
+  top: 0;
+  margin: 0;
+  
+}
+
+.btn-danger {
+  background-color: #d9534f;
+  border-color: #d9534f;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-danger:hover {
+  background-color: #c9302c;
+  border-color: #ac2925;
 }
