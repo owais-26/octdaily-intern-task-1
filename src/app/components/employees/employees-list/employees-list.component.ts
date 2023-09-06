@@ -36,6 +36,9 @@ export class EmployeesListComponent implements OnInit {
       },
     });
   }
+  sliceId(id: string): string {
+    return id.slice(0, 4);
+  }
   toggleSort(order: 'asc' | 'desc'): void {
     if (order === 'asc') {
       this.employees.sort((a, b) => a.name.localeCompare(b.name));

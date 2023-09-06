@@ -2,7 +2,7 @@
   <h1 class="my-2 text-center">Add New Employee!</h1>
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <form #form="ngForm" (ngSubmit)="addEmployee()" class="border rounded p-4">
+      <form ngNativeValidate #form="ngForm" (ngSubmit)="addEmployee()" class="border rounded p-4">
         <div class="form-group">
           <label for="name">Name</label>
           <input
@@ -12,7 +12,9 @@
             name="name"
             [(ngModel)]="addEmployeeRequest.name"
             required
+            #name="ngModel"
           />
+      
         </div>
         <div class="form-group">
           <label for="email">Email</label>
@@ -23,6 +25,7 @@
             name="email"
             [(ngModel)]="addEmployeeRequest.email"
             required
+            #email="ngModel"
           />
         </div>
         <div class="form-group">
@@ -34,6 +37,7 @@
             name="phone"
             [(ngModel)]="addEmployeeRequest.phone"
             required
+            #phone="ngModel"
           />
         </div>
         <div class="form-group">
@@ -45,6 +49,7 @@
             name="salary"
             [(ngModel)]="addEmployeeRequest.salary"
             required
+            #salary="ngModel"
           />
         </div>
         <div class="form-group">
@@ -56,6 +61,7 @@
             name="department"
             [(ngModel)]="addEmployeeRequest.department"
             required
+            #department="ngModel"
           />
         </div>
        
@@ -69,6 +75,7 @@
             name="createdBy"
             [(ngModel)]="addEmployeeRequest.createdBy"
             required
+            createdBy="ngModel"
           />
         </div>
       
